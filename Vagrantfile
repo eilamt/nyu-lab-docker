@@ -49,9 +49,6 @@ Vagrant.configure(2) do |config|
     wget -O cf-cli-installer_6.22.1_x86-64.deb 'https://cli.run.pivotal.io/stable?release=debian64&version=6.22.1&source=github-rel'
     sudo dpkg -i cf-cli-installer_6.22.1_x86-64.deb
     rm cf-cli-installer_6.22.1_x86-64.deb
-    cf plugins
-    echo Y | cf install-plugin https://static-ice.ng.bluemix.net/ibm-containers-linux_x64
-    cf plugins
     # Install the Bluemix CLI
     # wget http://public.dhe.ibm.com/cloud/bluemix/cli/bluemix-cli/Bluemix_CLI_0.4.2_amd64.tar.gz
     # tar -xvf Bluemix_CLI_0.4.2_amd64.tar.gz
@@ -79,6 +76,10 @@ Vagrant.configure(2) do |config|
   # Install Docker Compose after Docker Engine
   config.vm.provision "shell", inline: <<-SHELL
     sudo pip install docker-compose
+    # Install the IBM Container plugin
+    cf plugins
+    echo Y | cf install-plugin https://static-ice.ng.bluemix.net/ibm-containers-linux_x64
+    cf plugins
   SHELL
 
 end
