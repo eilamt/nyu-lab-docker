@@ -1,6 +1,9 @@
 # -*- mode: ruby -*-
 # vi: set ft=ruby :
 
+# WARNING: You will need the following plugin:
+# vagrant plugin install vagrant-vbguest
+
 # All Vagrant configuration is done below. The "2" in Vagrant.configure
 # configures the configuration version (we support older styles for
 # backwards compatibility). Please don't change it unless you know what
@@ -14,7 +17,9 @@ Vagrant.configure(2) do |config|
   # boxes at https://atlas.hashicorp.com/search.
   config.vm.box = "ubuntu/trusty64"
 
-  config.vm.network "forwarded_port", guest: 80, host: 8080
+  # config.vm.network "forwarded_port", guest: 80, host: 8080
+  # expose port 8080 in the VM to 8080 on the host
+  config.vm.network "forwarded_port", guest: 8080, host: 8080
   config.vm.network "forwarded_port", guest: 5000, host: 5000
 
   # Create a private network, which allows host-only access to the machine
@@ -74,12 +79,10 @@ Vagrant.configure(2) do |config|
   end
 
   # Install Docker Compose after Docker Engine
-  config.vm.provision "shell", inline: <<-SHELL
+  config.vm.provision "shell", privileged: false, inline: <<-SHELL
     sudo pip install docker-compose
     # Install the IBM Container plugin
-    cf plugins
     echo Y | cf install-plugin https://static-ice.ng.bluemix.net/ibm-containers-linux_x64
-    cf plugins
   SHELL
 
 end

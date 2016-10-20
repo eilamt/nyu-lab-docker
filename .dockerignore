@@ -1,0 +1,9 @@
+# Local environment
+.env
+.DS_Store
+
+# Virtual Environment files
+venv/
+
+# Vagrant
+.vagrant

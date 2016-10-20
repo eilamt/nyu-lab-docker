@@ -1,7 +1,7 @@
 # nyu-lab-docker
 
 [![Build Status](https://travis-ci.org/rofrano/nyu-lab-docker.svg?branch=master)](https://travis-ci.org/rofrano/nyu-lab-docker)
-  
+
 What is Docker? How can Docker containers help you build and deploy a cloud native solution as micro-services? This lab will teach you what-you-need-to-know to get started building and running Docker Containers in IBM Bluemix. It covers what Docker is, and more importantly, what Docker is not! You will learn how to deploy and run existing Docker community images, how to create your own Docker images and push them to Bluemix, and how to connect containers together using Docker Compose. If you want to know what all this fuss about containers is about, come to this lab and spin up a few containers and see for yourself why everyone is adopting Docker.
 
 This lab is an example of how to create a Python / Flask / Redis app using Docker on Bluemix
@@ -17,8 +17,12 @@ Download [VirtualBox](https://www.virtualbox.org) - Used to host virtual machine
 
 Download [Vagrant](https://www.vagrantup.com) - Used to auto-provision VMs containing your complete dev environment
 
-Install VirtualBox and then Vagrant. If you want to test with cURL you will need to have it installed on your laptop
-if your system doesn't already have it.
+Install VirtualBox and then Vagrant. If you want to test with cURL you will need to have it installed on your laptop if your system doesn't already have it.
+
+#### Vagrant Plugin needed!
+You will need to install the following Vagrant plugin in order for file sharing to work properly:
+
+    vagrant plugin install vagrant-vbguest
 
 That's it! VirtualBox will install Docker into the virtual machine so you don't have to.
 
