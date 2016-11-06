@@ -28,16 +28,17 @@ class TestServer(unittest.TestCase):
     def test_increment_counter(self):
         # get the current counter and increment it
         resp = self.app.get('/counter')
-        # print 'resp_data: ' + resp.data
         self.assertEquals(resp.status_code, 200)
         parsed_json = json.loads(resp.data)
         count = int(parsed_json['counter'])
+
         # post and make sure the counter is increments
         resp = self.app.get('/counter')
         self.assertEquals(resp.status_code, 200)
         resp = self.app.get('/counter')
         self.assertEquals(resp.status_code, 200)
 
+        # check that it was incremented by 2
         parsed_json = json.loads(resp.data)
         new_count = int(parsed_json['counter'])
         self.assertTrue (count + 2 == new_count)
